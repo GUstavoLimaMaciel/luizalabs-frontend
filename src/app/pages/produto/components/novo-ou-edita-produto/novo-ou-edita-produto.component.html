@@ -1,0 +1,29 @@
+<form [formGroup]="produtoForm">
+  <h3>{{ produto?.id ? 'Editar produto' : 'Criar produto'}}</h3>
+  <mat-form-field class="width-material-kit">
+    <input matInput placeholder="Nome" name="nome" type="text" maxlength="50" formControlName="nome" required autofocus autocomplete="off">
+    <mat-error *ngIf="produtoForm.get('nome').hasError('required')">
+        Campo <strong>obrigatório</strong>
+      </mat-error>
+  </mat-form-field>
+  <mat-form-field class="width-material-kit">
+    <input matInput placeholder="Fabricação" name="fabricacao" type="number" maxlength="50" formControlName="fabricacao" required autofocus autocomplete="off">
+    <mat-error *ngIf="produtoForm.get('fabricacao').hasError('required')">
+        Campo <strong>obrigatório</strong>
+      </mat-error>
+  </mat-form-field>
+  <mat-form-field class="width-material-kit">
+    <input matInput placeholder="Tamanho" name="tamanho" type="number" maxlength="50" formControlName="tamanho" required autofocus autocomplete="off">
+    <mat-error *ngIf="produtoForm.get('tamanho').hasError('required')">
+        Campo <strong>obrigatório</strong>
+      </mat-error>
+  </mat-form-field>
+  <mat-form-field class="width-material-kit">
+    <input matInput placeholder="Valor" name="valor" type="number" maxlength="50" formControlName="valor" required autofocus autocomplete="off">
+    <mat-error *ngIf="produtoForm.get('valor').hasError('required')">
+        Campo <strong>obrigatório</strong>
+      </mat-error>
+  </mat-form-field>  
+</form>
+
+<span class="button" (click)="salvar()">Salvar</span>

@@ -1,0 +1,22 @@
+<div class="wide">
+  <span class="button" [routerLink]="[ '/cliente/novo' ]">Novo</span>
+</div>
+<table>
+  <tr>
+    <th>Nome</th>
+    <th>CPF</th>
+    <th>Sexo</th>
+    <th>Email</th>
+    <th></th>
+  </tr>
+  <tr *ngFor="let item of clientes">
+    <td>{{item.nome}}</td>
+    <td>{{item.cpf}}</td>
+    <td>{{item.sexo}}</td>
+    <td>{{item.email}}</td>
+    <td class="wide-center">
+      <span class="table-button" [routerLink]="[ '/cliente/' + item.id ]">Editar</span>
+      <span class="table-button" (click)="deletar(item.id)">Deletar</span>
+    </td>
+  </tr>
+</table>

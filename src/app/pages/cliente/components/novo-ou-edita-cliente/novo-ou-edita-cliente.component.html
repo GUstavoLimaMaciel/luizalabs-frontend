@@ -1,0 +1,37 @@
+<form [formGroup]="clienteForm">
+  <h3>{{ cliente?.id ? 'Editar Cliente' : 'Criar Cliente'}}</h3>
+  <mat-form-field class="width-material-kit">
+    <input matInput placeholder="Nome" name="nome" type="text" maxlength="50" formControlName="nome" required autofocus autocomplete="off">
+    <mat-error *ngIf="clienteForm.get('nome').hasError('required')">
+        Campo <strong>obrigatório</strong>
+      </mat-error>
+  </mat-form-field>
+  <mat-form-field class="width-material-kit">
+    <mat-select placeholder="Sexo" name="sexo" value="" formControlName="sexo">
+      <mat-option  value="M">Masculino</mat-option>
+      <mat-option  value="F">Feminino</mat-option>
+      <mat-option  value="O">Não Definido</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="width-material-kit">
+    <input matInput placeholder="Email" name="email" type="email" formControlName="email" maxlength="200" required autocomplete="off">
+    <mat-error *ngIf="clienteForm.get('email').hasError('required')">
+        Campo <strong>obrigatório</strong>
+      </mat-error>
+    <mat-error *ngIf="clienteForm.get('email').hasError('email')">
+        Email <strong>inválido</strong>
+      </mat-error>    
+  </mat-form-field>
+  <mat-form-field class="width-material-kit">
+    <input matInput placeholder="CPF" value="" pattern="^[0-9]*$" name="cpf" type="text" formControlName="cpf" maxlength="14" mask="000.000.000-00" required autocomplete="off">
+    <!-- <mat-hint align="start"><strong>Don't disclose personal info</strong> </mat-hint> -->
+    <mat-error *ngIf="clienteForm.get('cpf').hasError('required')">
+        CPF é <strong>obrigatório</strong>
+      </mat-error>
+    <mat-error *ngIf="clienteForm.get('cpf').hasError('invalido') && !clienteForm.get('cpf').hasError('required')">
+          CPF é <strong>inválido!</strong>
+      </mat-error>
+  </mat-form-field>    
+</form>
+
+<span class="button" (click)="salvar()">Salvar</span>
